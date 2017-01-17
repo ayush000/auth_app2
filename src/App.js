@@ -9,12 +9,12 @@ export default class extends React.Component {
 
   componentDidMount() {
     initializeSdk(function () {
-
+      browserHistory.push('/');
       // eslint-disable-next-line no-undef
       FB.Event.subscribe('auth.statusChange', function (response) {
         if (response.status === 'connected') {
           // Redirect to /Home
-          browserHistory.replace('/Home');
+          browserHistory.push('/Home');
         } else {
           // Redirect to root
           // console.log('not connected');

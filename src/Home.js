@@ -14,16 +14,9 @@ export default class extends React.Component {
             userName: '',
         };
     }
-    /** Will be called when router re-routes to the same url */
-    componentWillUpdate() {
-        // console.log('Home component will update');
 
-        if (typeof FB !== 'undefined' && this.state.userName === '') {
-            this.componentDidMount();
-        }
-    }
 
-    /**Will be called when the component initially renders */
+    /**Will be called when the component renders */
     componentDidMount() {
         // console.log('Home component will mount');
         if (typeof FB !== 'undefined') {
