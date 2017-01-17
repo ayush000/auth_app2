@@ -16,6 +16,9 @@
         "eol-last": [
             1,
             "always"
+        ],
+        "valid-jsdoc": [
+            1
         ]
     }
 }

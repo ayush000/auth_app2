@@ -1,6 +1,10 @@
 import { getUserImage, getUser, logout } from './facebook';
 import React from 'react';
 
+/**
+ * Component to display user's name, facebook image and an option to logout.
+ * Mounted on /home using react-router
+ **/
 export default class extends React.Component {
     constructor() {
 
@@ -10,24 +14,18 @@ export default class extends React.Component {
             userName: '',
         };
     }
-
+    /** Will be called when router re-routes to the same url */
     componentWillUpdate() {
-        console.log('Home component will update');
+        // console.log('Home component will update');
 
         if (typeof FB !== 'undefined' && this.state.userName === '') {
-            getUser((err, user) => {
-                if (err) return console.log(err);
-                console.log(user);
-                this.setState({ userName: user.name });
-                getUserImage(user.id, (err, imgUrl) => {
-                    if (err) return console.log(err);
-                    this.setState({ imgUrl: imgUrl });
-                });
-            });
+            this.componentDidMount();
         }
     }
+
+    /**Will be called when the component initially renders */
     componentDidMount() {
-        console.log('Home component will mount');
+        // console.log('Home component will mount');
         if (typeof FB !== 'undefined') {
             getUser((err, user) => {
                 if (err) return console.log(err);
@@ -43,6 +41,7 @@ export default class extends React.Component {
     handleButtonClick = () => {
         logout();
     }
+
     render() {
         return (
             <div>
